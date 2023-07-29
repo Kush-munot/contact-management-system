@@ -1,28 +1,29 @@
 const mongoose = require('mongoose')
 
-const employeeSchema = new mongoose.Schema({
-    id:{
+const inventorySchema = new mongoose.Schema({
+    id: {
         type:Number
     },
-    firstName:{
-        type:String,
-        required:true
+    itemName: {
+        type: String,
+        required: true
     },
-    lastName:{
-        type:String,
-        required:true
+    price: {
+        type: Number,
+        required: true
     },
-    email:{
-        type:String,
-        required:true
+    quantity: {
+        type: Number,
+        required: true
     },
-    salary:{
-        type:Number,
-        required:true
+    vendorName: {
+        type: String,
+        required: true
     },
-    dateOfJoining:{
-        type:String,
+    category: {
+        type: String,
+        required: true
     },
 })
 
-module.exports = mongoose.model('Employee', employeeSchema)
+module.exports = mongoose.model('inventory', inventorySchema)
