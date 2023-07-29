@@ -1,8 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors')
+require('dotenv').config()
 
-const url = 'mongodb+srv://kushmunot:kushmunot@employeecluster.mgtloeq.mongodb.net/InventoryDB?retryWrites=true&w=majority'
+const url = process.env.URL;
 const app = express()
 mongoose.connect(url)
 app.use(cors())

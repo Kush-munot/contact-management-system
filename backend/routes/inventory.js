@@ -4,16 +4,16 @@ const Inventory = require('../model/inventory_model')
 
 router.get('/', async (req, res) => {
     try {
-        const emp = await Inventory.find()
-        res.json(emp)
+        const inv = await Inventory.find()
+        res.json(inv)
     } catch (err) {
         console.log(err);
     }
 })
 router.get('/:id', async (req, res) => {
     try {
-        const empid = await Inventory.findById(req.params.id)
-        res.json(empid)
+        const invid = await Inventory.findById(req.params.id)
+        res.json(invid)
     } catch (err) {
         console.log(err);
     }
@@ -22,11 +22,11 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
     const inv = new Inventory({
         id: req.body.id,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        salary: req.body.salary,
-        dateOfJoining: req.body.dateOfJoining
+        itemName: req.body.itemName,
+        price: req.body.price,
+        quantity: req.body.quantity,
+        vendorName: req.body.vendorName,
+        category: req.body.category
     })
 
     try {
