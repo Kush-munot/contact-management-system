@@ -32,7 +32,7 @@ const Edit = ({ inventory, selectedInventory, setInventory, setIsEditing }) => {
       });
     }
 
-    axios.patch(`http://localhost:8090/inventory/${_id}`, {
+    axios.patch(`https://lopsided-peridot-snipe.glitch.me/inventory/${_id}`, {
       itemName: itemName,
       price: price,
       category: category,

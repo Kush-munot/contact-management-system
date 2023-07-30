@@ -34,7 +34,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
       cancelButtonText: 'No, cancel!',
     }).then(result => {
       if (result.value) {
-        axios.delete(`http://localhost:8090/inventory/${id}`).then(() => {
+        axios.delete(`https://lopsided-peridot-snipe.glitch.me/inventory/${id}`).then(() => {
           console.log(result);
           Swal.fire({
             icon: 'success',
@@ -63,9 +63,9 @@ const Dashboard = ({ setIsAuthenticated }) => {
             handleDelete={handleDelete}
           />
           <Charts />
-          <TwoDimPieCh/>
-          <PieCh/>
-          <RadarCh/>
+          <TwoDimPieCh />
+          <PieCh />
+          <RadarCh />
         </>
       )}
       {isAdding && (

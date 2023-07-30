@@ -20,7 +20,7 @@ const Add = ({ inventory, setInventory, setIsAdding }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8090/inventory', {
+    axios.post('https://lopsided-peridot-snipe.glitch.me/inventory', {
       itemName,
       price,
       quantity,

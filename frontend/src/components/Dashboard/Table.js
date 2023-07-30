@@ -14,7 +14,7 @@ const Table = ({ inventory, handleEdit, handleDelete }) => {
 
   const getMyPostData = async () => {
     try {
-      const res = await axios.get("http://localhost:8090/inventory");
+      const res = await axios.get("https://lopsided-peridot-snipe.glitch.me/inventory");
       setMyData(res.data);
     } catch (error) {
       setIsError(error.message);
