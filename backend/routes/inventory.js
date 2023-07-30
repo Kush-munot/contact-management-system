@@ -40,11 +40,11 @@ router.post('/', async (req, res) => {
 router.patch('/:id', async (req, res) => {
     try {
         const invs = await Inventory.findById(req.params.id)
-        emp.firstName = req.body.firstName
-        emp.lastName = req.body.lastName
-        emp.salary = req.body.salary
-        emp.email = req.body.email
-        emp.dateOfJoining = req.body.dateOfJoining
+        invs.itemName = req.body.itemName
+        invs.price = req.body.price
+        invs.category = req.body.category
+        invs.quantity = req.body.quantity
+        invs.vendorName = req.body.vendorName
         const a2 = await invs.save()
         res.json(a2)
     } catch (err) {
