@@ -52,7 +52,7 @@ const Login = ({ setIsAuthenticated }) => {
   return (
     <div className="small-container">
       <form onSubmit={handleLogin}>
-        <h1>Admin Login</h1>
+        <h1>User Login</h1>
         <label htmlFor="email">Email</label>
         <input
           id="email"
@@ -72,6 +72,7 @@ const Login = ({ setIsAuthenticated }) => {
           onChange={e => setPassword(e.target.value)}
         />
         <input style={{ marginTop: '12px' }} type="submit" value="Login" />
+
       </form>
     </div>
   );

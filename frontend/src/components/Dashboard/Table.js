@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
+import Charts from './Charts/AreaChart';
 
-const Table = ({ employees, handleEdit, handleDelete }) => {
-  employees.forEach((employee, i) => {
-    employee.id = i + 1;
+
+const Table = ({ inventory, handleEdit, handleDelete }) => {
+  inventory.forEach((itm, i) => {
+    itm.id = i + 1;
   });
 
-  const formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: null,
-  });
 
   const [myData, setMyData] = useState([]);
   const [isError, setIsError] = useState("");
@@ -83,7 +80,7 @@ const Table = ({ employees, handleEdit, handleDelete }) => {
             ))
           ) : (
             <tr>
-              <td colSpan={7}>No Employees</td>
+              <td colSpan={7}>No Items</td>
             </tr>
           )}
         </tbody>

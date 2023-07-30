@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import axios from 'axios'
 
-const Edit = ({ employees, selectedEmployee, setEmployees, setIsEditing }) => {
+const Edit = ({ inventory, selectedInventory, setInventory, setIsEditing }) => {
   const [itemName, setItemName] = useState('');
   const [_id, set_id] = useState('');
   const [price, setPrice] = useState('');
