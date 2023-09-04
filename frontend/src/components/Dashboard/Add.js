@@ -12,20 +12,20 @@ import axios from 'axios'
  */
 
 const Add = ({ inventory, setInventory, setIsAdding }) => {
-  const [itemName, setItemName] = useState('')
-  const [price, setPrice] = useState(0)
-  const [quantity, setQuantity] = useState(0)
-  const [vendorName, setVendorName] = useState('')
+  const [contactName, setContactName] = useState('')
+  const [phoneNumber, setPhoneNumber] = useState(0)
+  const [email, setEmail] = useState(0)
+  const [address, setAddress] = useState('')
   const [category, setCategory] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('https://lopsided-peridot-snipe.glitch.me/inventory', {
-      itemName,
-      price,
-      quantity,
+    axios.post('http://localhost:8090/inventory', {
+      contactName,
+      phoneNumber,
+      email,
       category,
-      vendorName
+      address
     }).then((res) => {
       console.log(res)
       Swal.fire({
@@ -44,29 +44,29 @@ const Add = ({ inventory, setInventory, setIsAdding }) => {
     <div className="small-container">
       <form onSubmit={handleSubmit}>
         <h1>Add Item</h1>
-        <label htmlFor="itemName">Item Name</label>
+        <label htmlFor="contactName">Contact Name</label>
         <input
-          id="itemName"
+          id="contactName"
           type="text"
-          name="itemName"
-          value={itemName}
-          onChange={(e) => setItemName(e.target.value)}
+          name="contactName"
+          value={contactName}
+          onChange={(e) => setContactName(e.target.value)}
         />
-        <label htmlFor="price">Price</label>
+        <label htmlFor="phoneNumber">Phone Number</label>
         <input
-          id="price"
+          id="phoneNumber"
           type="number"
-          name="price"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
+          name="phoneNumber"
+          value={phoneNumber}
+          onChange={(e) => setPhoneNumber(e.target.value)}
         />
-        <label htmlFor="quantity">Quantity</label>
+        <label htmlFor="email">Email</label>
         <input
-          id="quantity"
-          type="number"
-          name="quantity"
-          value={quantity}
-          onChange={(e) => setQuantity(e.target.value)}
+          id="email"
+          type="email"
+          name="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <label htmlFor="category">Category</label>
         <input
@@ -76,13 +76,13 @@ const Add = ({ inventory, setInventory, setIsAdding }) => {
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         />
-        <label htmlFor="vendor">Vendor Name</label>
+        <label htmlFor="vendor">Address</label>
         <input
           id="vendor"
           type="text"
-          name="vendorName"
-          value={vendorName}
-          onChange={(e) => setVendorName(e.target.value)}
+          name="address"
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
         />
         <div style={{ marginTop: '30px' }}>
           <input type="submit" value="Add" />

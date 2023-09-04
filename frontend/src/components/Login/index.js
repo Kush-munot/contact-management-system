@@ -41,7 +41,7 @@ const Login = ({ setIsAuthenticated }) => {
           Swal.fire({
             icon: 'error',
             title: 'Error!',
-            text: 'Incorrect quantity or password.',
+            text: 'Incorrect email or password.',
             showConfirmButton: true,
           });
         },

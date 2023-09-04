@@ -2,21 +2,21 @@ const mongoose = require('mongoose')
 
 const inventorySchema = new mongoose.Schema({
     id: {
-        type:Number
+        type: Number
     },
-    itemName: {
+    contactName: {
         type: String,
         required: true
     },
-    price: {
+    phoneNumber: {
         type: Number,
         required: true
     },
-    quantity: {
-        type: Number,
+    email: {
+        type: String,
         required: true
     },
-    vendorName: {
+    address: {
         type: String,
         required: true
     },

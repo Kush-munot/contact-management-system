@@ -14,20 +14,20 @@ const Table = ({ inventory, handleEdit, handleDelete }) => {
 
   const getMyPostData = async () => {
     try {
-      const res = await axios.get("https://lopsided-peridot-snipe.glitch.me/inventory");
+      const res = await axios.get("http://localhost:8090/inventory");
       setMyData(res.data);
     } catch (error) {
       setIsError(error.message);
     }
   };
 
-  const setDataToStorage = (_id, itemName, price, quantity, category, vendorName) => {
-    localStorage.setItem("itemName", itemName);
+  const setDataToStorage = (_id, contactName, phoneNumber, email, category, address) => {
+    localStorage.setItem("contactName", contactName);
     localStorage.setItem("_id", _id);
-    localStorage.setItem("price", price);
-    localStorage.setItem("quantity", quantity);
+    localStorage.setItem("phoneNumber", phoneNumber);
+    localStorage.setItem("email", email);
     localStorage.setItem("category", category);
-    localStorage.setItem("vendorName", vendorName);
+    localStorage.setItem("address", address);
   }
 
   useEffect(() => {
@@ -40,11 +40,11 @@ const Table = ({ inventory, handleEdit, handleDelete }) => {
         <thead>
           <tr>
             <th>SNo.</th>
-            <th>Item Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
+            <th>Contact Name</th>
+            <th>Phone Number</th>
+            <th>Email</th>
             <th>Category</th>
-            <th>Vendor Name</th>
+            <th>Address</th>
             <th colSpan={2} className="text-center">
               Actions
             </th>
@@ -55,14 +55,14 @@ const Table = ({ inventory, handleEdit, handleDelete }) => {
             myData.map((employee, i) => (
               <tr key={employee.id}>
                 <td>{i + 1}</td>
-                <td>{employee.itemName}</td>
-                <td>{employee.price}</td>
-                <td>{employee.quantity}</td>
+                <td>{employee.contactName}</td>
+                <td>{employee.phoneNumber}</td>
+                <td>{employee.email}</td>
                 <td>{employee.category}</td>
-                <td>{employee.vendorName} </td>
+                <td>{employee.address} </td>
                 <td className="text-right">
                   <button
-                    onClick={() => { setDataToStorage(employee._id, employee.itemName, employee.price, employee.quantity, employee.category, employee.vendorName); handleEdit(employee.id) }}
+                    onClick={() => { setDataToStorage(employee._id, employee.contactName, employee.phoneNumber, employee.email, employee.category, employee.address); handleEdit(employee.id) }}
                     className="button muted-button"
                   >
                     Edit

@@ -3,27 +3,27 @@ import Swal from 'sweetalert2';
 import axios from 'axios'
 
 const Edit = ({ inventory, selectedInventory, setInventory, setIsEditing }) => {
-  const [itemName, setItemName] = useState('');
+  const [contactName, setContactName] = useState('');
   const [_id, set_id] = useState('');
-  const [price, setPrice] = useState('');
-  const [quantity, setQuantity] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [email, setEmail] = useState('');
   const [category, setCategory] = useState('');
-  const [vendorName, setVendorName] = useState('');
+  const [address, SetAddress] = useState('');
 
   useEffect(() => {
-    setItemName(localStorage.getItem('itemName'))
+    setContactName(localStorage.getItem('contactName'))
     set_id(localStorage.getItem('_id'))
-    setPrice(localStorage.getItem('price'))
-    setQuantity(localStorage.getItem('quantity'))
+    setPhoneNumber(localStorage.getItem('phoneNumber'))
+    setEmail(localStorage.getItem('email'))
     setCategory(localStorage.getItem('category'))
-    setVendorName(localStorage.getItem('vendorName'))
+    SetAddress(localStorage.getItem('address'))
     set_id(localStorage.getItem('_id'))
   }, [])
 
   const handleUpdate = (e) => {
     e.preventDefault();
 
-    if (!itemName || !price || !quantity || !category || !vendorName) {
+    if (!contactName || !phoneNumber || !email || !category || !address) {
       return Swal.fire({
         icon: 'error',
         title: 'Error!',
@@ -32,12 +32,12 @@ const Edit = ({ inventory, selectedInventory, setInventory, setIsEditing }) => {
       });
     }
 
-    axios.patch(`https://lopsided-peridot-snipe.glitch.me/inventory/${_id}`, {
-      itemName: itemName,
-      price: price,
+    axios.patch(`http://localhost:8090/inventory/${_id}`, {
+      contactName: contactName,
+      phoneNumber: phoneNumber,
       category: category,
-      quantity: quantity,
-      vendorName: vendorName
+      email: email,
+      address: address
     }).then((res) => {
       console.log(res)
 
@@ -65,29 +65,29 @@ const Edit = ({ inventory, selectedInventory, setInventory, setIsEditing }) => {
     <div className="small-container">
       <form onSubmit={handleUpdate}>
         <h1>Edit Item</h1>
-        <label htmlFor="itemName">Item Name</label>
+        <label htmlFor="contactName">Item Name</label>
         <input
-          id="itemName"
+          id="contactName"
           type="text"
-          name="itemName"
-          value={itemName}
-          onChange={e => setItemName(e.target.value)}
+          name="contactName"
+          value={contactName}
+          onChange={e => setContactName(e.target.value)}
         />
-        <label htmlFor="price">Price</label>
+        <label htmlFor="phoneNumber">Price</label>
         <input
-          id="price"
+          id="phoneNumber"
           type="number"
-          name="price"
-          value={price}
-          onChange={e => setPrice(e.target.value)}
+          name="phoneNumber"
+          value={phoneNumber}
+          onChange={e => setPhoneNumber(e.target.value)}
         />
-        <label htmlFor="quantity">Quantity</label>
+        <label htmlFor="email">Email</label>
         <input
-          id="quantity"
-          type="number"
-          name="quantity"
-          value={quantity}
-          onChange={e => setQuantity(e.target.value)}
+          id="email"
+          type="email"
+          name="email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
         />
         <label htmlFor="category">Category</label>
         <input
@@ -102,8 +102,8 @@ const Edit = ({ inventory, selectedInventory, setInventory, setIsEditing }) => {
           id="vendor"
           type="text"
           name="Vendor Name"
-          value={vendorName}
-          onChange={e => setVendorName(e.target.value)}
+          value={address}
+          onChange={e => SetAddress(e.target.value)}
         />
         <div style={{ marginTop: '30px' }}>
           <input type="submit" value="Update" />

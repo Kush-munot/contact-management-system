@@ -1,971 +1,968 @@
-
 import React from "react";
 import {
-    AreaChart,
-    Area,
+    LineChart,
+    Line,
     XAxis,
     YAxis,
     CartesianGrid,
     Tooltip,
-    Legend
-} from "recharts";
+    Legend,
+    Brush,
+    AreaChart,
+    Area,
+    ResponsiveContainer,
+} from 'recharts';
 
-const data = [
+const data01 = [
     {
         "country": "Afghanistan",
-        "casesPerOneMillion": 5530
+        "testsPerOneMillion": 31857
     },
     {
         "country": "Albania",
-        "casesPerOneMillion": 116777
+        "testsPerOneMillion": 677173
     },
     {
         "country": "Algeria",
-        "casesPerOneMillion": 5995
+        "testsPerOneMillion": 5093
     },
     {
         "country": "Andorra",
-        "casesPerOneMillion": 619844
+        "testsPerOneMillion": 3225256
     },
     {
         "country": "Angola",
-        "casesPerOneMillion": 3009
+        "testsPerOneMillion": 42818
     },
     {
         "country": "Anguilla",
-        "casesPerOneMillion": 256336
+        "testsPerOneMillion": 3373736
     },
     {
         "country": "Antigua and Barbuda",
-        "casesPerOneMillion": 91509
+        "testsPerOneMillion": 189943
     },
     {
         "country": "Argentina",
-        "casesPerOneMillion": 218755
+        "testsPerOneMillion": 776264
     },
     {
         "country": "Armenia",
-        "casesPerOneMillion": 151177
+        "testsPerOneMillion": 1091164
     },
     {
         "country": "Aruba",
-        "casesPerOneMillion": 410969
+        "testsPerOneMillion": 1653068
     },
     {
         "country": "Australia",
-        "casesPerOneMillion": 450863
+        "testsPerOneMillion": 3142326
     },
     {
         "country": "Austria",
-        "casesPerOneMillion": 670727
+        "testsPerOneMillion": 23302116
     },
     {
         "country": "Azerbaijan",
-        "casesPerOneMillion": 80793
+        "testsPerOneMillion": 744822
     },
     {
         "country": "Bahamas",
-        "casesPerOneMillion": 95087
+        "testsPerOneMillion": 643767
     },
     {
         "country": "Bahrain",
-        "casesPerOneMillion": 407163
+        "testsPerOneMillion": 6112666
     },
     {
         "country": "Bangladesh",
-        "casesPerOneMillion": 12183
+        "testsPerOneMillion": 90862
     },
     {
         "country": "Barbados",
-        "casesPerOneMillion": 380188
+        "testsPerOneMillion": 2782594
     },
     {
         "country": "Belarus",
-        "casesPerOneMillion": 105381
+        "testsPerOneMillion": 1446722
     },
     {
         "country": "Belgium",
-        "casesPerOneMillion": 412012
+        "testsPerOneMillion": 3172590
     },
     {
         "country": "Belize",
-        "casesPerOneMillion": 171722
+        "testsPerOneMillion": 1397453
     },
     {
         "country": "Benin",
-        "casesPerOneMillion": 2191
+        "testsPerOneMillion": 47268
     },
     {
         "country": "Bermuda",
-        "casesPerOneMillion": 304493
+        "testsPerOneMillion": 16622128
     },
     {
         "country": "Bhutan",
-        "casesPerOneMillion": 79571
+        "testsPerOneMillion": 2923739
     },
     {
         "country": "Bolivia",
-        "casesPerOneMillion": 100662
+        "testsPerOneMillion": 225993
     },
     {
         "country": "Bosnia",
-        "casesPerOneMillion": 124046
+        "testsPerOneMillion": 580036
     },
     {
         "country": "Botswana",
-        "casesPerOneMillion": 135275
+        "testsPerOneMillion": 830300
     },
     {
         "country": "Brazil",
-        "casesPerOneMillion": 175394
+        "testsPerOneMillion": 296146
     },
     {
         "country": "British Virgin Islands",
-        "casesPerOneMillion": 238757
+        "testsPerOneMillion": 3508269
     },
     {
         "country": "Brunei",
-        "casesPerOneMillion": 697127
+        "testsPerOneMillion": 1611437
     },
     {
         "country": "Bulgaria",
-        "casesPerOneMillion": 191525
+        "testsPerOneMillion": 1656051
     },
     {
         "country": "Burkina Faso",
-        "casesPerOneMillion": 998
+        "testsPerOneMillion": 11265
     },
     {
         "country": "Burundi",
-        "casesPerOneMillion": 4296
+        "testsPerOneMillion": 27386
     },
     {
         "country": "Cabo Verde",
-        "casesPerOneMillion": 113159
+        "testsPerOneMillion": 707482
     },
     {
         "country": "Cambodia",
-        "casesPerOneMillion": 8093
+        "testsPerOneMillion": 180062
     },
     {
         "country": "Cameroon",
-        "casesPerOneMillion": 4482
+        "testsPerOneMillion": 62762
     },
     {
         "country": "Canada",
-        "casesPerOneMillion": 122601
+        "testsPerOneMillion": 1728207
     },
     {
         "country": "Caribbean Netherlands",
-        "casesPerOneMillion": 438398
+        "testsPerOneMillion": 1130559
     },
     {
         "country": "Cayman Islands",
-        "casesPerOneMillion": 467797
+        "testsPerOneMillion": 3311280
     },
     {
         "country": "Central African Republic",
-        "casesPerOneMillion": 3063
+        "testsPerOneMillion": 16205
     },
     {
         "country": "Chad",
-        "casesPerOneMillion": 442
+        "testsPerOneMillion": 10988
     },
     {
         "country": "Channel Islands",
-        "casesPerOneMillion": 576421
+        "testsPerOneMillion": 7099551
     },
     {
         "country": "Chile",
-        "casesPerOneMillion": 274869
+        "testsPerOneMillion": 2595800
     },
     {
         "country": "China",
-        "casesPerOneMillion": 347
+        "testsPerOneMillion": 110461
     },
     {
         "country": "Colombia",
-        "casesPerOneMillion": 123814
+        "testsPerOneMillion": 717327
     },
     {
         "country": "Comoros",
-        "casesPerOneMillion": 10038
+        "testsPerOneMillion": 0
     },
     {
         "country": "Congo",
-        "casesPerOneMillion": 4377
+        "testsPerOneMillion": 59991
     },
     {
         "country": "Cook Islands",
-        "casesPerOneMillion": 407034
+        "testsPerOneMillion": 1120596
     },
     {
         "country": "Costa Rica",
-        "casesPerOneMillion": 239058
+        "testsPerOneMillion": 899158
     },
     {
         "country": "Croatia",
-        "casesPerOneMillion": 313955
+        "testsPerOneMillion": 1386346
     },
     {
         "country": "Cuba",
-        "casesPerOneMillion": 98634
+        "testsPerOneMillion": 1268918
     },
     {
         "country": "Curaçao",
-        "casesPerOneMillion": 277812
+        "testsPerOneMillion": 3000640
     },
     {
         "country": "Cyprus",
-        "casesPerOneMillion": 540184
+        "testsPerOneMillion": 7879860
     },
     {
         "country": "Czechia",
-        "casesPerOneMillion": 432575
+        "testsPerOneMillion": 5332724
     },
     {
         "country": "Côte d'Ivoire",
-        "casesPerOneMillion": 3184
+        "testsPerOneMillion": 60951
     },
     {
         "country": "DRC",
-        "casesPerOneMillion": 1026
+        "testsPerOneMillion": 8890
     },
     {
         "country": "Denmark",
-        "casesPerOneMillion": 545566
+        "testsPerOneMillion": 22164190
     },
     {
         "country": "Diamond Princess",
-        "casesPerOneMillion": 0
+        "testsPerOneMillion": 0
     },
     {
         "country": "Djibouti",
-        "casesPerOneMillion": 15441
+        "testsPerOneMillion": 301094
     },
     {
         "country": "Dominica",
-        "casesPerOneMillion": 217848
+        "testsPerOneMillion": 3170187
     },
     {
         "country": "Dominican Republic",
-        "casesPerOneMillion": 60332
+        "testsPerOneMillion": 338350
     },
     {
         "country": "Ecuador",
-        "casesPerOneMillion": 59024
+        "testsPerOneMillion": 170173
     },
     {
         "country": "Egypt",
-        "casesPerOneMillion": 4861
+        "testsPerOneMillion": 34792
     },
     {
         "country": "El Salvador",
-        "casesPerOneMillion": 30805
+        "testsPerOneMillion": 398467
     },
     {
         "country": "Equatorial Guinea",
-        "casesPerOneMillion": 11512
+        "testsPerOneMillion": 244342
     },
     {
         "country": "Eritrea",
-        "casesPerOneMillion": 2782
+        "testsPerOneMillion": 6470
     },
     {
         "country": "Estonia",
-        "casesPerOneMillion": 468674
+        "testsPerOneMillion": 2824136
     },
     {
         "country": "Ethiopia",
-        "casesPerOneMillion": 4147
+        "testsPerOneMillion": 46053
     },
     {
         "country": "Falkland Islands (Malvinas)",
-        "casesPerOneMillion": 545352
+        "testsPerOneMillion": 2439107
     },
     {
         "country": "Faroe Islands",
-        "casesPerOneMillion": 703959
+        "testsPerOneMillion": 15802409
     },
     {
         "country": "Fiji",
-        "casesPerOneMillion": 75997
+        "testsPerOneMillion": 739866
     },
     {
         "country": "Finland",
-        "casesPerOneMillion": 267208
+        "testsPerOneMillion": 2178453
     },
     {
         "country": "France",
-        "casesPerOneMillion": 612013
+        "testsPerOneMillion": 4139547
     },
     {
         "country": "French Guiana",
-        "casesPerOneMillion": 312065
+        "testsPerOneMillion": 2072951
     },
     {
         "country": "French Polynesia",
-        "casesPerOneMillion": 276675
+        "testsPerOneMillion": 0
     },
     {
         "country": "Gabon",
-        "casesPerOneMillion": 21013
+        "testsPerOneMillion": 695641
     },
     {
         "country": "Gambia",
-        "casesPerOneMillion": 4935
+        "testsPerOneMillion": 60851
     },
     {
         "country": "Georgia",
-        "casesPerOneMillion": 467476
+        "testsPerOneMillion": 4263340
     },
     {
         "country": "Germany",
-        "casesPerOneMillion": 458119
+        "testsPerOneMillion": 1458359
     },
     {
         "country": "Ghana",
-        "casesPerOneMillion": 5301
+        "testsPerOneMillion": 78346
     },
     {
         "country": "Gibraltar",
-        "casesPerOneMillion": 609720
+        "testsPerOneMillion": 15852213
     },
     {
         "country": "Greece",
-        "casesPerOneMillion": 591412
+        "testsPerOneMillion": 9909078
     },
     {
         "country": "Greenland",
-        "casesPerOneMillion": 210117
+        "testsPerOneMillion": 2894810
     },
     {
         "country": "Grenada",
-        "casesPerOneMillion": 173545
+        "testsPerOneMillion": 1612523
     },
     {
         "country": "Guadeloupe",
-        "casesPerOneMillion": 508349
+        "testsPerOneMillion": 2346306
     },
     {
         "country": "Guatemala",
-        "casesPerOneMillion": 68658
+        "testsPerOneMillion": 408622
     },
     {
         "country": "Guinea",
-        "casesPerOneMillion": 2781
+        "testsPerOneMillion": 47607
     },
     {
         "country": "Guinea-Bissau",
-        "casesPerOneMillion": 4659
+        "testsPerOneMillion": 70385
     },
     {
         "country": "Guyana",
-        "casesPerOneMillion": 92419
+        "testsPerOneMillion": 923396
     },
     {
         "country": "Haiti",
-        "casesPerOneMillion": 2937
+        "testsPerOneMillion": 11337
     },
     {
         "country": "Holy See (Vatican City State)",
-        "casesPerOneMillion": 36295
+        "testsPerOneMillion": 0
     },
     {
         "country": "Honduras",
-        "casesPerOneMillion": 46330
+        "testsPerOneMillion": 162472
     },
     {
         "country": "Hong Kong",
-        "casesPerOneMillion": 383723
+        "testsPerOneMillion": 10011143
     },
     {
         "country": "Hungary",
-        "casesPerOneMillion": 229388
+        "testsPerOneMillion": 1186160
     },
     {
         "country": "Iceland",
-        "casesPerOneMillion": 605661
+        "testsPerOneMillion": 5780036
     },
     {
         "country": "India",
-        "casesPerOneMillion": 31989
+        "testsPerOneMillion": 661721
     },
     {
         "country": "Indonesia",
-        "casesPerOneMillion": 24408
+        "testsPerOneMillion": 408975
     },
     {
         "country": "Iran",
-        "casesPerOneMillion": 88506
+        "testsPerOneMillion": 661854
     },
     {
         "country": "Iraq",
-        "casesPerOneMillion": 58474
+        "testsPerOneMillion": 463523
     },
     {
         "country": "Ireland",
-        "casesPerOneMillion": 342276
+        "testsPerOneMillion": 2606161
     },
     {
         "country": "Isle of Man",
-        "casesPerOneMillion": 443335
+        "testsPerOneMillion": 1758422
     },
     {
         "country": "Israel",
-        "casesPerOneMillion": 518334
+        "testsPerOneMillion": 4436346
     },
     {
         "country": "Italy",
-        "casesPerOneMillion": 430709
+        "testsPerOneMillion": 4560908
     },
     {
         "country": "Jamaica",
-        "casesPerOneMillion": 52213
+        "testsPerOneMillion": 396633
     },
     {
         "country": "Japan",
-        "casesPerOneMillion": 269169
+        "testsPerOneMillion": 799578
     },
     {
         "country": "Jordan",
-        "casesPerOneMillion": 169597
+        "testsPerOneMillion": 1669945
     },
     {
         "country": "Kazakhstan",
-        "casesPerOneMillion": 73514
+        "testsPerOneMillion": 602707
     },
     {
         "country": "Kenya",
-        "casesPerOneMillion": 6118
+        "testsPerOneMillion": 70569
     },
     {
         "country": "Kiribati",
-        "casesPerOneMillion": 41201
+        "testsPerOneMillion": 0
     },
     {
         "country": "Kuwait",
-        "casesPerOneMillion": 152072
+        "testsPerOneMillion": 1930391
     },
     {
         "country": "Kyrgyzstan",
-        "casesPerOneMillion": 30750
+        "testsPerOneMillion": 283460
     },
     {
         "country": "Lao People's Democratic Republic",
-        "casesPerOneMillion": 29250
+        "testsPerOneMillion": 164845
     },
     {
         "country": "Latvia",
-        "casesPerOneMillion": 529173
+        "testsPerOneMillion": 4262279
     },
     {
         "country": "Lebanon",
-        "casesPerOneMillion": 185277
+        "testsPerOneMillion": 717380
     },
     {
         "country": "Lesotho",
-        "casesPerOneMillion": 15990
+        "testsPerOneMillion": 198199
     },
     {
         "country": "Liberia",
-        "casesPerOneMillion": 1525
+        "testsPerOneMillion": 26356
     },
     {
         "country": "Libyan Arab Jamahiriya",
-        "casesPerOneMillion": 72048
+        "testsPerOneMillion": 352782
     },
     {
         "country": "Liechtenstein",
-        "casesPerOneMillion": 559408
+        "testsPerOneMillion": 2929559
     },
     {
         "country": "Lithuania",
-        "casesPerOneMillion": 497191
+        "testsPerOneMillion": 3936084
     },
     {
         "country": "Luxembourg",
-        "casesPerOneMillion": 498091
+        "testsPerOneMillion": 7140959
     },
     {
         "country": "MS Zaandam",
-        "casesPerOneMillion": 0
+        "testsPerOneMillion": 0
     },
     {
         "country": "Macao",
-        "casesPerOneMillion": 23101
+        "testsPerOneMillion": 11760
     },
     {
         "country": "Macedonia",
-        "casesPerOneMillion": 167383
+        "testsPerOneMillion": 1069626
     },
     {
         "country": "Madagascar",
-        "casesPerOneMillion": 2340
+        "testsPerOneMillion": 18210
     },
     {
         "country": "Malawi",
-        "casesPerOneMillion": 4402
+        "testsPerOneMillion": 30959
     },
     {
         "country": "Malaysia",
-        "casesPerOneMillion": 154403
+        "testsPerOneMillion": 2062094
     },
     {
         "country": "Maldives",
-        "casesPerOneMillion": 345087
+        "testsPerOneMillion": 4092223
     },
     {
         "country": "Mali",
-        "casesPerOneMillion": 1544
+        "testsPerOneMillion": 37483
     },
     {
         "country": "Malta",
-        "casesPerOneMillion": 270374
+        "testsPerOneMillion": 4840363
     },
     {
         "country": "Marshall Islands",
-        "casesPerOneMillion": 268395
+        "testsPerOneMillion": 0
     },
     {
         "country": "Martinique",
-        "casesPerOneMillion": 615777
+        "testsPerOneMillion": 2215870
     },
     {
         "country": "Mauritania",
-        "casesPerOneMillion": 12998
+        "testsPerOneMillion": 206030
     },
     {
         "country": "Mauritius",
-        "casesPerOneMillion": 33631
+        "testsPerOneMillion": 281374
     },
     {
         "country": "Mayotte",
-        "casesPerOneMillion": 146815
+        "testsPerOneMillion": 618038
     },
     {
         "country": "Mexico",
-        "casesPerOneMillion": 58021
+        "testsPerOneMillion": 152124
     },
     {
         "country": "Micronesia",
-        "casesPerOneMillion": 225808
+        "testsPerOneMillion": 701598
     },
     {
         "country": "Moldova",
-        "casesPerOneMillion": 154757
+        "testsPerOneMillion": 801437
     },
     {
         "country": "Monaco",
-        "casesPerOneMillion": 424830
+        "testsPerOneMillion": 1976875
     },
     {
         "country": "Mongolia",
-        "casesPerOneMillion": 299275
+        "testsPerOneMillion": 1193000
     },
     {
         "country": "Montenegro",
-        "casesPerOneMillion": 465599
+        "testsPerOneMillion": 4403172
     },
     {
         "country": "Montserrat",
-        "casesPerOneMillion": 282578
+        "testsPerOneMillion": 3577442
     },
     {
         "country": "Morocco",
-        "casesPerOneMillion": 33769
+        "testsPerOneMillion": 344191
     },
     {
         "country": "Mozambique",
-        "casesPerOneMillion": 7054
+        "testsPerOneMillion": 41437
     },
     {
         "country": "Myanmar",
-        "casesPerOneMillion": 11610
+        "testsPerOneMillion": 202247
     },
     {
         "country": "N. Korea",
-        "casesPerOneMillion": 183636
+        "testsPerOneMillion": 0
     },
     {
         "country": "Namibia",
-        "casesPerOneMillion": 65302
+        "testsPerOneMillion": 403460
     },
     {
         "country": "Nauru",
-        "casesPerOneMillion": 494635
+        "testsPerOneMillion": 1881042
     },
     {
         "country": "Nepal",
-        "casesPerOneMillion": 33198
+        "testsPerOneMillion": 200088
     },
     {
         "country": "Netherlands",
-        "casesPerOneMillion": 500270
+        "testsPerOneMillion": 1509718
     },
     {
         "country": "New Caledonia",
-        "casesPerOneMillion": 274726
+        "testsPerOneMillion": 340182
     },
     {
         "country": "New Zealand",
-        "casesPerOneMillion": 501061
+        "testsPerOneMillion": 1586011
     },
     {
         "country": "Nicaragua",
-        "casesPerOneMillion": 2728
+        "testsPerOneMillion": 0
     },
     {
         "country": "Niger",
-        "casesPerOneMillion": 381
+        "testsPerOneMillion": 9759
     },
     {
         "country": "Nigeria",
-        "casesPerOneMillion": 1230
+        "testsPerOneMillion": 26339
     },
     {
         "country": "Niue",
-        "casesPerOneMillion": 545006
+        "testsPerOneMillion": 0
     },
     {
         "country": "Norway",
-        "casesPerOneMillion": 269798
+        "testsPerOneMillion": 1996315
     },
     {
         "country": "Oman",
-        "casesPerOneMillion": 75028
+        "testsPerOneMillion": 4695724
     },
     {
         "country": "Pakistan",
-        "casesPerOneMillion": 6892
+        "testsPerOneMillion": 133256
     },
     {
         "country": "Palau",
-        "casesPerOneMillion": 341578
+        "testsPerOneMillion": 3872045
     },
     {
         "country": "Palestine",
-        "casesPerOneMillion": 116173
+        "testsPerOneMillion": 575907
     },
     {
         "country": "Panama",
-        "casesPerOneMillion": 235677
+        "testsPerOneMillion": 1752234
     },
     {
         "country": "Papua New Guinea",
-        "casesPerOneMillion": 5043
+        "testsPerOneMillion": 26813
     },
     {
         "country": "Paraguay",
-        "casesPerOneMillion": 111367
+        "testsPerOneMillion": 363751
     },
     {
         "country": "Peru",
-        "casesPerOneMillion": 134158
+        "testsPerOneMillion": 1158115
     },
     {
         "country": "Philippines",
-        "casesPerOneMillion": 37100
+        "testsPerOneMillion": 316944
     },
     {
         "country": "Poland",
-        "casesPerOneMillion": 172740
+        "testsPerOneMillion": 1028745
     },
     {
         "country": "Portugal",
-        "casesPerOneMillion": 552351
+        "testsPerOneMillion": 4549993
     },
     {
         "country": "Qatar",
-        "casesPerOneMillion": 172664
+        "testsPerOneMillion": 1364257
     },
     {
         "country": "Romania",
-        "casesPerOneMillion": 179555
+        "testsPerOneMillion": 1462693
     },
     {
         "country": "Russia",
-        "casesPerOneMillion": 157673
+        "testsPerOneMillion": 1875095
     },
     {
         "country": "Rwanda",
-        "casesPerOneMillion": 9793
+        "testsPerOneMillion": 442778
     },
     {
         "country": "Réunion",
-        "casesPerOneMillion": 535854
+        "testsPerOneMillion": 1766027
     },
     {
         "country": "S. Korea",
-        "casesPerOneMillion": 670887
+        "testsPerOneMillion": 307892
     },
     {
         "country": "Saint Helena",
-        "casesPerOneMillion": 354211
+        "testsPerOneMillion": 0
     },
     {
         "country": "Saint Kitts and Nevis",
-        "casesPerOneMillion": 122645
+        "testsPerOneMillion": 2356704
     },
     {
         "country": "Saint Lucia",
-        "casesPerOneMillion": 162344
+        "testsPerOneMillion": 1139752
     },
     {
         "country": "Saint Martin",
-        "casesPerOneMillion": 310194
+        "testsPerOneMillion": 2828643
     },
     {
         "country": "Saint Pierre Miquelon",
-        "casesPerOneMillion": 599410
+        "testsPerOneMillion": 4410488
     },
     {
         "country": "Saint Vincent and the Grenadines",
-        "casesPerOneMillion": 86337
+        "testsPerOneMillion": 1023720
     },
     {
         "country": "Samoa",
-        "casesPerOneMillion": 82961
+        "testsPerOneMillion": 926612
     },
     {
         "country": "San Marino",
-        "casesPerOneMillion": 716327
+        "testsPerOneMillion": 5775414
     },
     {
         "country": "Sao Tome and Principe",
-        "casesPerOneMillion": 28971
+        "testsPerOneMillion": 127530
     },
     {
         "country": "Saudi Arabia",
-        "casesPerOneMillion": 23475
+        "testsPerOneMillion": 1268848
     },
     {
         "country": "Senegal",
-        "casesPerOneMillion": 5042
+        "testsPerOneMillion": 64946
     },
     {
         "country": "Serbia",
-        "casesPerOneMillion": 294112
+        "testsPerOneMillion": 1507622
     },
     {
         "country": "Seychelles",
-        "casesPerOneMillion": 512311
+        "testsPerOneMillion": 0
     },
     {
         "country": "Sierra Leone",
-        "casesPerOneMillion": 934
+        "testsPerOneMillion": 31296
     },
     {
         "country": "Singapore",
-        "casesPerOneMillion": 430001
+        "testsPerOneMillion": 4165302
     },
     {
         "country": "Sint Maarten",
-        "casesPerOneMillion": 251353
+        "testsPerOneMillion": 1411454
     },
     {
         "country": "Slovakia",
-        "casesPerOneMillion": 341936
+        "testsPerOneMillion": 1361601
     },
     {
         "country": "Slovenia",
-        "casesPerOneMillion": 647028
+        "testsPerOneMillion": 1370382
     },
     {
         "country": "Solomon Islands",
-        "casesPerOneMillion": 34077
+        "testsPerOneMillion": 0
     },
     {
         "country": "Somalia",
-        "casesPerOneMillion": 1623
+        "testsPerOneMillion": 23778
     },
     {
         "country": "South Africa",
-        "casesPerOneMillion": 67095
+        "testsPerOneMillion": 441027
     },
     {
         "country": "South Sudan",
-        "casesPerOneMillion": 1581
+        "testsPerOneMillion": 35313
     },
     {
         "country": "Spain",
-        "casesPerOneMillion": 297840
+        "testsPerOneMillion": 10082298
     },
     {
         "country": "Sri Lanka",
-        "casesPerOneMillion": 31173
+        "testsPerOneMillion": 300619
     },
     {
         "country": "St. Barth",
-        "casesPerOneMillion": 553746
+        "testsPerOneMillion": 7908095
     },
     {
         "country": "Sudan",
-        "casesPerOneMillion": 1391
+        "testsPerOneMillion": 12240
     },
     {
         "country": "Suriname",
-        "casesPerOneMillion": 138378
+        "testsPerOneMillion": 405822
     },
     {
         "country": "Swaziland",
-        "casesPerOneMillion": 63201
+        "testsPerOneMillion": 885119
     },
     {
         "country": "Sweden",
-        "casesPerOneMillion": 265684
+        "testsPerOneMillion": 1908301
     },
     {
         "country": "Switzerland",
-        "casesPerOneMillion": 502613
+        "testsPerOneMillion": 2716487
     },
     {
         "country": "Syrian Arab Republic",
-        "casesPerOneMillion": 2982
+        "testsPerOneMillion": 7553
     },
     {
         "country": "Taiwan",
-        "casesPerOneMillion": 428720
+        "testsPerOneMillion": 1286903
     },
     {
         "country": "Tajikistan",
-        "casesPerOneMillion": 1786
+        "testsPerOneMillion": 0
     },
     {
         "country": "Tanzania",
-        "casesPerOneMillion": 681
+        "testsPerOneMillion": 0
     },
     {
         "country": "Thailand",
-        "casesPerOneMillion": 67873
+        "testsPerOneMillion": 246450
     },
     {
         "country": "Timor-Leste",
-        "casesPerOneMillion": 17131
+        "testsPerOneMillion": 203391
     },
     {
         "country": "Togo",
-        "casesPerOneMillion": 4552
+        "testsPerOneMillion": 93641
     },
     {
         "country": "Tokelau",
-        "casesPerOneMillion": 58055
+        "testsPerOneMillion": 0
     },
     {
         "country": "Tonga",
-        "casesPerOneMillion": 156094
+        "testsPerOneMillion": 4965327
     },
     {
         "country": "Trinidad and Tobago",
-        "casesPerOneMillion": 136143
+        "testsPerOneMillion": 649295
     },
     {
         "country": "Tunisia",
-        "casesPerOneMillion": 95741
+        "testsPerOneMillion": 416164
     },
     {
         "country": "Turkey",
-        "casesPerOneMillion": 201399
+        "testsPerOneMillion": 1902052
     },
     {
         "country": "Turks and Caicos Islands",
-        "casesPerOneMillion": 166830
+        "testsPerOneMillion": 15471478
     },
     {
         "country": "Tuvalu",
-        "casesPerOneMillion": 243909
+        "testsPerOneMillion": 0
     },
     {
         "country": "UAE",
-        "casesPerOneMillion": 105837
+        "testsPerOneMillion": 19910389
     },
     {
         "country": "UK",
-        "casesPerOneMillion": 360179
+        "testsPerOneMillion": 7628357
     },
     {
         "country": "USA",
-        "casesPerOneMillion": 322954
+        "testsPerOneMillion": 3542384
     },
     {
         "country": "Uganda",
-        "casesPerOneMillion": 3546
+        "testsPerOneMillion": 62198
     },
     {
         "country": "Ukraine",
-        "casesPerOneMillion": 128681
+        "testsPerOneMillion": 754855
     },
     {
         "country": "Uruguay",
-        "casesPerOneMillion": 297131
+        "testsPerOneMillion": 1749083
     },
     {
         "country": "Uzbekistan",
-        "casesPerOneMillion": 7378
+        "testsPerOneMillion": 40077
     },
     {
         "country": "Vanuatu",
-        "casesPerOneMillion": 37346
+        "testsPerOneMillion": 77606
     },
     {
         "country": "Venezuela",
-        "casesPerOneMillion": 18885
+        "testsPerOneMillion": 114771
     },
     {
         "country": "Vietnam",
-        "casesPerOneMillion": 117458
+        "testsPerOneMillion": 867342
     },
     {
         "country": "Wallis and Futuna",
-        "casesPerOneMillion": 323256
+        "testsPerOneMillion": 1867419
     },
     {
         "country": "Western Sahara",
-        "casesPerOneMillion": 16
+        "testsPerOneMillion": 0
     },
     {
         "country": "Yemen",
-        "casesPerOneMillion": 383
+        "testsPerOneMillion": 10579
     },
     {
         "country": "Zambia",
-        "casesPerOneMillion": 17940
+        "testsPerOneMillion": 211244
     },
     {
         "country": "Zimbabwe",
-        "casesPerOneMillion": 17332
+        "testsPerOneMillion": 164744
     }
 ]
+
 
 export default function App() {
     return (
         <div>
-            <h3>Country Name vs COVID Cases</h3>
-            <AreaChart
+            <h2>Tests Per One Million Pie Chart</h2>
+            <LineChart
                 width={1100}
                 height={500}
-                data={data}
+                data={data01}
+                syncId="anyId"
                 margin={{
-                    top: 5,
+                    top: 10,
                     right: 30,
-                    left: 20,
-                    bottom: 5
+                    left: 0,
+                    bottom: 0,
                 }}
             >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
+                <XAxis dataKey="country" />
                 <YAxis />
                 <Tooltip />
-                <Legend />
-                <Area
-                    type="monotone"
-                    dataKey="cases"
-                    stroke="#000"
-                    fill="#FDE5EC"
-                    activeDot={{ r: 8 }}
-                />
-                <Area type="monotone" dataKey="casesPerOneMillion" stroke="#000" fill="#E48586" />
-            </AreaChart>
+                <Line type="monotone" dataKey="testsPerOneMillion" stroke="#8884d8" fill="#8884d8" />
+            </LineChart>
         </div>
     );
 }

@@ -7,8 +7,8 @@ import Add from './Add';
 import Edit from './Edit';
 import Charts from './Charts/AreaChart'
 import TwoDimPieCh from './Charts/TwoDimPieCh'
-import PieCh from './Charts/PieChart'
-import RadarCh from './Charts/RadarCh'
+import PieCh from './Charts/LineChart'
+import RadarCh from './Charts/BarCh'
 
 
 const Dashboard = ({ setIsAuthenticated }) => {
@@ -34,7 +34,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
       cancelButtonText: 'No, cancel!',
     }).then(result => {
       if (result.value) {
-        axios.delete(`https://lopsided-peridot-snipe.glitch.me/inventory/${id}`).then(() => {
+        axios.delete(`http://localhost:8090/inventory/${id}`).then(() => {
           console.log(result);
           Swal.fire({
             icon: 'success',
